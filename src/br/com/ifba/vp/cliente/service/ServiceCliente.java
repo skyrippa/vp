@@ -27,8 +27,6 @@ public class ServiceCliente extends IServiceCliente {
     public final static String CLIENTE_INVALIDO = "Cliente inválido";
     
     private final IDaoCliente daoCliente = new DaoCliente();
-    
-
 
     @Override
     public Cliente saveCliente(Cliente cliente) {

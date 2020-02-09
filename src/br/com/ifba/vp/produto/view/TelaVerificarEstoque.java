@@ -7,6 +7,10 @@ package br.com.ifba.vp.produto.view;
 import br.com.ifba.vp.gerente.view.TelaGerente;
 import br.com.ifba.vp.funcionario.view.TelaFuncionario;
 import br.com.ifba.vp.caixa.model.Caixa;
+import br.com.ifba.vp.funcionarioCaixa.model.FuncionarioCaixa;
+import br.com.ifba.vp.infraestructure.service.Singleton;
+import br.com.ifba.vp.infraestructure.support.StringUtil;
+import br.com.ifba.vp.produto.model.Produto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -14,16 +18,17 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Icaro
+ * @author iagobm
  */
 public class TelaVerificarEstoque extends javax.swing.JFrame {
-int i;
+    private String autor;
     /**
      * Creates new form TelaVerificarEstoque
      */
-    public TelaVerificarEstoque(int u) {
-        i = u;
+    public TelaVerificarEstoque(String autor) {
         initComponents();
+        this.autor = autor;
+        this.carregarProdutos();
     }
 
     /**
@@ -40,11 +45,11 @@ int i;
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        buttonBuscar = new javax.swing.JButton();
+        buttonSair = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        tabelaProdutos = new javax.swing.JTable();
+        textFieldNomeProduto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -83,55 +88,55 @@ int i;
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel12)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Nome do produto");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lupa.png"))); // NOI18N
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lupa.png"))); // NOI18N
+        buttonBuscar.setText("Buscar");
+        buttonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonBuscarActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout.png"))); // NOI18N
-        jButton2.setText("Sair");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout.png"))); // NOI18N
+        buttonSair.setText("Sair");
+        buttonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonSairActionPerformed(evt);
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+
             },
             new String [] {
                 "Produto", "Preço", "Seção", "Data de Validade"
             }
         ));
-        jScrollPane1.setViewportView(jTable2);
+        jScrollPane1.setViewportView(tabelaProdutos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(426, 426, 426)
-                            .addComponent(jButton2))
+                            .addComponent(buttonSair))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(30, 30, 30)
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1)))
+                            .addComponent(buttonBuscar)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 84, Short.MAX_VALUE))
         );
@@ -143,12 +148,12 @@ int i;
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(195, 195, 195)
-                .addComponent(jButton2)
+                .addComponent(buttonSair)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -167,59 +172,74 @@ int i;
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        if(i == 1){
-            new TelaFuncionario().setVisible(true);
-            this.dispose();
-        }if(i == 2){
-            new TelaGerente().setVisible(true);
-            this.dispose();
+    private void carregarProdutos() {
+        // Instanciando tabela
+        DefaultTableModel tabelaProdutos = (DefaultTableModel) this.tabelaProdutos.getModel();      
+        
+        // Buscando funcionariosCaixa do banco de dados
+        List<Produto> produtos;
+        produtos = Singleton.getInstance().getAllProduto();
+        
+        // preenchendo tabela com os funcionarios
+        for(int i = 0 ; i < produtos.size(); i++){
+            tabelaProdutos.addRow(new Object[]{
+                produtos.get(i).getNomeProduto(),
+                produtos.get(i).getPreco(),
+                produtos.get(i).getSecao(),
+                produtos.get(i).getDataValidade(),
+            });
         }
-//        new TelaGerente().setVisible(true);
-//        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }
+   
+    private boolean validarCampos() {
+        StringUtil util = StringUtil.getInstance();
+        
+        if (util.isNullOrEmpty(this.textFieldNomeProduto.getText())) {
+            return false;
+        }
+        return true;
+    }
+    
+    private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
+        // retorna para tela do gerente ou funcionário
+        if (this.autor.equals("funcionario")) {
+            new TelaFuncionario().setVisible(true);
+        } else if (this.autor.equals("gerente")) {
+            new TelaGerente().setVisible(true);
+        }
+        this.dispose();
+    }//GEN-LAST:event_buttonSairActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
-//        
-//        ProdutosDAO Pdao = new ProdutosDAO();
-//        List<Produtos> PP = new ArrayList();       
-//        PP = Pdao.BuscaNome(jTextField1.getText());
-//        int y = 0;
-//        Caixa caixa = new Caixa();
-        
-        //jLabel3.setText(String.valueOf(caixa.getDebito()));
-        
-//        for(int i = 0; i < PP.size(); i++){
-//            y++;
-//            modelo.addRow(new Object[]{
-//                
-//                PP.get(i).getNomeProduto(),
-//                PP.get(i).getPreco(),
-//                PP.get(i).getSecao(),
-//                PP.get(i).getDataValidade(),
-//            });
-//       
-//        }
-//        if(y == 0){
-//            JOptionPane.showMessageDialog(null, "Produto não cadastrado!");
-//        }
-        
-//        for(Produtos P: Pdao.BuscaNome(jTextField1.getText())){
-//            
-//            modelo.addRow(new Object[]{
-//                
-//                P.getNomeProduto(),
-//                P.getPreco(),
-//                P.getSecao(),
-//                P.getDataValidade(),
-//            
-//            });
-//        }
+    private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
+        if (this.validarCampos()) {
+            // Instanciando tabela
+            DefaultTableModel tabelaProdutos = (DefaultTableModel) this.tabelaProdutos.getModel();      
             
-    }//GEN-LAST:event_jButton1ActionPerformed
+            // Limpando tabela
+            int rowCount = tabelaProdutos.getRowCount();
+            
+            for (int i = rowCount - 1; i >= 0; i--) {
+                tabelaProdutos.removeRow(i);
+            }
+            
+            // Buscando funcionariosCaixa do banco de dados
+            String nomeProduto = this.textFieldNomeProduto.getText();
+            List<Produto> produtos;
+            produtos = Singleton.getInstance().findByNomeProduto(nomeProduto);
+
+            // preenchendo tabela com os funcionarios
+            for(int i = 0 ; i < produtos.size(); i++){
+                tabelaProdutos.addRow(new Object[]{
+                    produtos.get(i).getNomeProduto(),
+                    produtos.get(i).getPreco(),
+                    produtos.get(i).getSecao(),
+                    produtos.get(i).getDataValidade(),
+                });
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }
+    }//GEN-LAST:event_buttonBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,15 +277,15 @@ int i;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton buttonBuscar;
+    private javax.swing.JButton buttonSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tabelaProdutos;
+    private javax.swing.JTextField textFieldNomeProduto;
     // End of variables declaration//GEN-END:variables
 }

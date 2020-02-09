@@ -183,7 +183,7 @@ public class TelaGerente extends javax.swing.JFrame {
 
     private void buttonVerificarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVerificarEstoqueActionPerformed
         // TODO add your handling code here:
-        new TelaVerificarEstoque(2).setVisible(true);
+        new TelaVerificarEstoque("gerente").setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buttonVerificarEstoqueActionPerformed
 

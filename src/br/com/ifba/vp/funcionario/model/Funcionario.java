@@ -20,6 +20,7 @@ import javax.persistence.InheritanceType;
 public abstract class Funcionario extends PessoaFisica {
     
     private String email;
+    
     private String Senha;
 
     // Métodos Acessores

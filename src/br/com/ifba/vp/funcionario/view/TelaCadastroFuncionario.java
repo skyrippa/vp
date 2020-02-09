@@ -8,8 +8,6 @@ import br.com.ifba.vp.gerente.view.TelaGerente;
 import br.com.ifba.vp.funcionarioCaixa.model.FuncionarioCaixa;
 import br.com.ifba.vp.infraestructure.service.Singleton;
 import br.com.ifba.vp.infraestructure.support.StringUtil;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -122,8 +120,6 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     public void setTxtsenhaFunc(JPasswordField txtsenhaFunc) {
         this.passwordFieldSenha = txtsenhaFunc;
     }
-
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -515,7 +511,6 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(null, "Erro ao salvar");
             }
-            
         }
     }//GEN-LAST:event_buttonSalvarActionPerformed
 

@@ -6,9 +6,13 @@
 package br.com.ifba.vp.funcionario.view;
 
 import br.com.ifba.vp.cliente.view.TelaCadastroCliente;
+import br.com.ifba.vp.infraestructure.service.Singleton;
+import br.com.ifba.vp.infraestructure.support.StringUtil;
 import br.com.ifba.vp.produto.view.TelaCadastroProduto;
 import br.com.ifba.vp.login.view.TelaLogin;
+import br.com.ifba.vp.produto.model.Produto;
 import br.com.ifba.vp.produto.view.TelaVerificarEstoque;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +26,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
      */
     public TelaFuncionario() {
         initComponents();
+        this.carregarProdutos();
     }
 
     /**
@@ -53,9 +58,9 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        buttonConfirmar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaProdutos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -263,20 +268,25 @@ public class TelaFuncionario extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
-        jButton6.setBackground(new java.awt.Color(0, 153, 51));
-        jButton6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Confirmar");
+        buttonConfirmar.setBackground(new java.awt.Color(0, 153, 51));
+        buttonConfirmar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        buttonConfirmar.setForeground(new java.awt.Color(255, 255, 255));
+        buttonConfirmar.setText("Confirmar");
+        buttonConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonConfirmarActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+
             },
             new String [] {
                 "Produto", "Preço", "Lote", "Data de validade"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaProdutos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -291,7 +301,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buttonConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -312,7 +322,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
 
@@ -331,8 +341,32 @@ public class TelaFuncionario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void popularTabelaProdutos() {
-        // preencher produtos cadastrados na tabela
+    private void carregarProdutos() {
+        // Instanciando tabela
+        DefaultTableModel tabelaProdutos = (DefaultTableModel) this.tabelaProdutos.getModel();      
+        
+        // Buscando funcionariosCaixa do banco de dados
+        List<Produto> produtos;
+        produtos = Singleton.getInstance().getAllProduto();
+        
+        // preenchendo tabela com os funcionarios
+        for(int i = 0 ; i < produtos.size(); i++){
+            tabelaProdutos.addRow(new Object[]{
+                produtos.get(i).getNomeProduto(),
+                produtos.get(i).getPreco(),
+                produtos.get(i).getSecao(),
+                produtos.get(i).getDataValidade(),
+            });
+        }
+    }
+   
+    private boolean validarCampos() {
+        StringUtil util = StringUtil.getInstance();
+        
+        if (util.isNullOrEmpty(this.textFieldCodigoBarras.getText())) {
+            return false;
+        }
+        return true;
     }
     
     private void buttonNovoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoClienteActionPerformed
@@ -343,7 +377,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
     private void buttonVerificarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVerificarEstoqueActionPerformed
         // TODO add your handling code here:
-        new TelaVerificarEstoque(1).setVisible(true);
+        new TelaVerificarEstoque("funcionario").setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buttonVerificarEstoqueActionPerformed
 
@@ -354,7 +388,34 @@ public class TelaFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCadastrarProdutoActionPerformed
 
     private void buttonBuscarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarProdutoActionPerformed
-        
+        if (this.validarCampos()) {
+            // Instanciando tabela
+            DefaultTableModel tabelaProdutos = (DefaultTableModel) this.tabelaProdutos.getModel();      
+            
+            // Limpando tabela
+            int rowCount = tabelaProdutos.getRowCount();
+            
+            for (int i = rowCount - 1; i >= 0; i--) {
+                tabelaProdutos.removeRow(i);
+            }
+            
+            // Buscando funcionariosCaixa do banco de dados
+            int codigoBarras = Integer.parseInt(this.textFieldCodigoBarras.getText());
+            List<Produto> produtos;
+            produtos = Singleton.getInstance().findByCodigoBarras(codigoBarras);
+
+            // preenchendo tabela com os funcionarios
+            for(int i = 0 ; i < produtos.size(); i++){
+                tabelaProdutos.addRow(new Object[]{
+                    produtos.get(i).getNomeProduto(),
+                    produtos.get(i).getPreco(),
+                    produtos.get(i).getSecao(),
+                    produtos.get(i).getDataValidade(),
+                });
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "O campo deve ser preenchido!");
+        }
     }//GEN-LAST:event_buttonBuscarProdutoActionPerformed
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
@@ -362,6 +423,10 @@ public class TelaFuncionario extends javax.swing.JFrame {
         new TelaLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buttonSairActionPerformed
+
+    private void buttonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConfirmarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonConfirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,10 +466,10 @@ public class TelaFuncionario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBuscarProduto;
     private javax.swing.JButton buttonCadastrarProduto;
+    private javax.swing.JButton buttonConfirmar;
     private javax.swing.JButton buttonNovoCliente;
     private javax.swing.JButton buttonSair;
     private javax.swing.JButton buttonVerificarEstoque;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -420,7 +485,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaProdutos;
     private javax.swing.JTextField textFieldCodigoBarras;
     // End of variables declaration//GEN-END:variables
 }

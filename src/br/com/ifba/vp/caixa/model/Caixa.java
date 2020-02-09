@@ -21,6 +21,7 @@ public class Caixa extends AbstractEntity implements Serializable {
     
     //@Column(name="debito", length=100, nullable=false) //not null
     private double debito;
+    
     //@Column(name="caixa", length=100, nullable=false) //not null
     private double caixa;
 

@@ -7,7 +7,7 @@ package br.com.ifba.vp.funcionario.view;
 import br.com.ifba.vp.gerente.view.TelaGerente;
 import br.com.ifba.vp.funcionarioCaixa.model.FuncionarioCaixa;
 import br.com.ifba.vp.infraestructure.service.Singleton;
-import java.util.ArrayList;
+import br.com.ifba.vp.infraestructure.support.StringUtil;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +22,7 @@ public class PesquisarFuncionario extends javax.swing.JFrame {
      */
     public PesquisarFuncionario() {
         initComponents();
+        this.carregarFuncionarios();
     }
 
     /**
@@ -43,7 +44,7 @@ public class PesquisarFuncionario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaFuncionarios = new javax.swing.JTable();
         textFieldCpf = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -109,18 +110,15 @@ public class PesquisarFuncionario extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("Resultado da busca");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Nome", "RG"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaFuncionarios);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -193,6 +191,32 @@ public class PesquisarFuncionario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void carregarFuncionarios() {
+        // Instanciando tabela
+        DefaultTableModel tabelaFuncionarios = (DefaultTableModel) this.tabelaFuncionarios.getModel();      
+        
+        // Buscando funcionariosCaixa do banco de dados
+        List<FuncionarioCaixa> funcionariosCaixa;
+        funcionariosCaixa = Singleton.getInstance().getAllFuncionarioCaixa();
+        
+        // preenchendo tabela com os funcionarios
+        for(int i = 0 ; i < funcionariosCaixa.size(); i++){
+            tabelaFuncionarios.addRow(new Object[]{
+                funcionariosCaixa.get(i).getNome(),
+                funcionariosCaixa.get(i).getRg(),
+            });
+        }
+    }
+    
+    private boolean validarCampos() {
+        StringUtil util = StringUtil.getInstance();
+        
+        if (util.isNullOrEmpty(this.textFieldCpf.getText())) {
+            return false;
+        }
+        return true;
+    }
+    
     private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
         // retorna para tela do gerente
         new TelaGerente().setVisible(true);
@@ -200,23 +224,33 @@ public class PesquisarFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonVoltarActionPerformed
 
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
-//        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();      
-//        int y = 0;
-//        
-//        List <FuncionarioCaixa> buscarPorCpf = Singleton.getInstance().findFuncionarioByCpf(this.textFieldCpf.getText());
-//        
-//        for(int i = 0 ; i < buscarPorCpf.size(); i++){
-//            y++;
-//            modelo.addRow(new Object[]{
-//                        
-//                buscarPorCpf.get(i).getNome(),
-//                buscarPorCpf.get(i).getRG(),
-//            });
-//        }
-//        
-//        if(y == 0){
-//            JOptionPane.showMessageDialog(null, "Funcionário não cadastrado!");
-//        }
+        if (this.validarCampos()) {
+            // Instanciando tabela
+            DefaultTableModel tabelaFuncionarios = (DefaultTableModel) this.tabelaFuncionarios.getModel();      
+            
+            // Limpando tabela
+            int rowCount = tabelaFuncionarios.getRowCount();
+            
+            for (int i = rowCount - 1; i >= 0; i--) {
+                tabelaFuncionarios.removeRow(i);
+            }
+            
+            // Buscando funcionariosCaixa do banco de dados
+            String cpf = this.textFieldCpf.getText();
+            List<FuncionarioCaixa> funcionarios;
+            funcionarios = Singleton.getInstance().findByCpfFuncionario(cpf);
+
+            // preenchendo tabela com os funcionarios
+            for(int i = 0 ; i < funcionarios.size(); i++){
+                tabelaFuncionarios.addRow(new Object[]{
+                    funcionarios.get(i).getNome(),
+                    funcionarios.get(i).getRg()
+                });
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha os campos necessários!");
+        }
+
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
     /**
@@ -265,7 +299,7 @@ public class PesquisarFuncionario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaFuncionarios;
     private javax.swing.JTextField textFieldCpf;
     // End of variables declaration//GEN-END:variables
 }

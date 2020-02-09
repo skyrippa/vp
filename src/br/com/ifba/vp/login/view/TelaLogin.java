@@ -166,7 +166,7 @@ public class TelaLogin extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     // validar campos da tela
-    private boolean validaCampos(){
+    private boolean validarCampos(){
         
         if (this.textFieldCpf.getText().equals("") || this.passwordFieldSenha.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Todos os campos são obrigatórios.", "CAMPOS OBRIGATÓRIOS", JOptionPane.ERROR_MESSAGE);
@@ -181,28 +181,28 @@ public class TelaLogin extends javax.swing.JFrame{
         String cpf = this.textFieldCpf.getText();
         String senha = this.passwordFieldSenha.getText();
         
-        if (!this.validaCampos()) {
-            JOptionPane.showMessageDialog(null, "Usuario não cadastrado!");   
-        }
-        
-        // Buscando funcionariosCaixa cadastrados e comparando-os com a senha e cpf inseridos
-        // pelo usuário na tela de login
-        for(FuncionarioCaixa funcionarioCaixa: Singleton.getInstance().getAllFuncionarioCaixa()){
-            
-            // Caso a senha e cpf chequem com uma da base de dados, a tela de funcionário é chamada
-            if(funcionarioCaixa.getCpf().equals(cpf) && funcionarioCaixa.getSenha().equals(senha)) {
-                new TelaFuncionario().setVisible(true);
-                this.dispose();
-            }
-        }
-        
         // Caso a senha e cpf seja para gerente, a tela de gerente é instanciada
-        if (cpf.equals("1234") && senha.equals("1234")) {
-            new TelaGerente().setVisible(true);
-            this.dispose();
-        } else {
-            // Em nenhum dos casos, é mostrada uma mensagem de usuário não cadastrado
-            JOptionPane.showMessageDialog(null, "Usuario não cadastrado!");   
+        if (this.validarCampos()) {
+            if (cpf.equals("1234") && senha.equals("1234")) {
+                new TelaGerente().setVisible(true);
+                this.dispose();
+            } else {
+                boolean funcionarioEncontrado = false;
+                // Buscando funcionariosCaixa cadastrados e comparando-os com a senha e cpf inseridos
+                // pelo usuário na tela de login
+                for(FuncionarioCaixa funcionarioCaixa: Singleton.getInstance().getAllFuncionarioCaixa()){
+
+                    // Caso a senha e cpf chequem com uma da base de dados, a tela de funcionário é chamada
+                    if(funcionarioCaixa.getCpf().equals(cpf) && funcionarioCaixa.getSenha().equals(senha)) {
+                        new TelaFuncionario().setVisible(true);
+                        this.dispose();
+                        funcionarioEncontrado = true;
+                    }
+                }
+                if (!funcionarioEncontrado) {
+                    JOptionPane.showMessageDialog(null, "Usuario não cadastrado!");   
+                }     
+            }
         }
     }//GEN-LAST:event_buttonEntrarActionPerformed
 

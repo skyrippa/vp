@@ -27,6 +27,4 @@ public class Fornecedor extends PessoaJuridica {
     public void setFax(String fax) {
         this.fax = fax;
     }
-    
-    
 }

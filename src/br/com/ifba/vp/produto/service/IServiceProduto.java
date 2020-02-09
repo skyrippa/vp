@@ -23,4 +23,8 @@ public abstract class IServiceProduto {
     public abstract List<Produto> getAllProduto ();
     // Método que retorna um produto pelo Id
     public abstract Produto  getByIdProduto (Long id);
+    // Busca produto por nome
+    public abstract List <Produto> findByNomeProduto(String nomeProduto); 
+    // Busca produto por código de barras
+    public abstract List <Produto> findByCodigoBarras(Integer codigoBarras);
 }

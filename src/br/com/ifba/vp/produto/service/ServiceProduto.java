@@ -141,4 +141,11 @@ public class ServiceProduto extends IServiceProduto {
         }
         return false;
     }
+    
+    public List <Produto> findByNomeProduto(String nomeProduto) {
+        return daoProduto.findByNomeProduto(nomeProduto);
+    }
+    public List <Produto> findByCodigoBarras(Integer codigoBarras) {
+        return daoProduto.findByCodigoBarras(codigoBarras);
+    }
 }

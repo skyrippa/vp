@@ -59,7 +59,8 @@ public class ServiceGerente extends IServiceGerente {
             throw new BusinessException(GERENTE_NAO_EXISTE);
         }else{
             this.daoGerente.delete(gerente);
-        }    }
+        }    
+    }
 
     @Override
     public Gerente updateGerente(Gerente gerente) {
@@ -77,7 +78,7 @@ public class ServiceGerente extends IServiceGerente {
         }else {
             //Atualiza o objeto na base de dados
             return this.daoGerente.update(gerente);
-           }
+        }
     }
 
     @Override
@@ -87,7 +88,7 @@ public class ServiceGerente extends IServiceGerente {
 
     @Override
     public Gerente getByIdGerente(Long id) {
-         return daoGerente.findById(id);
+        return daoGerente.findById(id);
     }
     
     private boolean validaGerente(Gerente gerente) {

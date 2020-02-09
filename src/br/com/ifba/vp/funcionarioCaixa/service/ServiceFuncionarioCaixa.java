@@ -60,7 +60,8 @@ public class ServiceFuncionarioCaixa extends IServiceFuncionarioCaixa {
             throw new BusinessException(FUNCIONARIO_CAIXA_NAO_EXISTE);
         }else{
             this.daoFuncionarioCaixa.delete(funcionarioCaixa);
-        }    }
+        }    
+    }
 
     @Override
     public FuncionarioCaixa updateFuncionarioCaixa(FuncionarioCaixa funcionarioCaixa) {
@@ -78,7 +79,7 @@ public class ServiceFuncionarioCaixa extends IServiceFuncionarioCaixa {
         }else {
             //Atualiza o objeto na base de dados
             return this.daoFuncionarioCaixa.update(funcionarioCaixa);
-           }
+        }
     }
 
     @Override
@@ -141,5 +142,10 @@ public class ServiceFuncionarioCaixa extends IServiceFuncionarioCaixa {
             }
         }
         return false;
+    }
+    
+    @Override
+    public List<FuncionarioCaixa> findByCpfFuncionario(String cpf) {
+        return daoFuncionarioCaixa.findByCpfFuncionario(cpf);
     }
 }

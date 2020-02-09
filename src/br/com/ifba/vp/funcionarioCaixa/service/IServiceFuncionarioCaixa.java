@@ -23,4 +23,6 @@ public abstract class IServiceFuncionarioCaixa {
     public abstract List<FuncionarioCaixa> getAllFuncionarioCaixa ();
     // Método que retorna um funcionarioCaixa pelo Id
     public abstract FuncionarioCaixa  getByIdFuncionarioCaixa (Long id);
+    // Retorna funcionários pelo cpf
+    public abstract List<FuncionarioCaixa> findByCpfFuncionario(String cpf);
 }

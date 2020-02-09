@@ -14,5 +14,5 @@ import java.util.List;
  * @author iagobm
  */
 public interface IDaoFuncionarioCaixa extends IBaseDao<FuncionarioCaixa>{
-    public abstract List <FuncionarioCaixa> findFuncionarioByCpf(String cpf);
+    public abstract List <FuncionarioCaixa> findByCpfFuncionario(String cpf);
 }

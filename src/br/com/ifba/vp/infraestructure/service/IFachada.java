@@ -72,6 +72,8 @@ public interface IFachada {
     public abstract void deleteFuncionarioCaixa(FuncionarioCaixa funcionarioCaixa);
     // Método que retorna todos FuncionarioCaixas da base de dados
     public abstract List<FuncionarioCaixa> getAllFuncionarioCaixa();
+    // Método que retorna funcionários por cpf
+    public abstract List<FuncionarioCaixa> findByCpfFuncionario(String cpf);
     
     // --------------- Gerente ---------------------
     // Método que salva um Gerente na base de dados
@@ -92,5 +94,9 @@ public interface IFachada {
     public abstract void deleteProduto(Produto produto);
     // Método que retorna todos Produtos da base de dados
     public abstract List<Produto> getAllProduto();
+    // Método que retorna produtos por nome
+    public abstract List<Produto> findByNomeProduto(String produto);
+    // Método que retorna produtos por código de barras
+    public abstract List<Produto> findByCodigoBarras(int codigoBarras);
    
 }

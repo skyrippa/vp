@@ -22,5 +22,5 @@ public abstract class IServiceCaixa {
     // Metodo que retorna todos os caixas da base de dados
     public abstract List<Caixa> getAllCaixa ();
     // Método que retorna um caixa pelo Id
-    public abstract Caixa  getByIdCaixa (Long id);
+    public abstract Caixa getByIdCaixa (Long id);
 }

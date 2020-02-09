@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class ServiceCaixa extends IServiceCaixa {
     
-     // Representa a mensagem de erro se o Professor for null;
+    // Representa a mensagem de erro se o Professor for null;
     public final static String CAIXA_NULL = "Caixa null";
     // Representa a mensagem de erro se o Professor já existir;
     public final static String CAIXA = "O Caixa já existe, sua operação não pode ser completada";
@@ -29,8 +29,6 @@ public class ServiceCaixa extends IServiceCaixa {
     
     private final IDaoCaixa daoCaixa = new DaoCaixa();
     
-
-
     @Override
     public Caixa saveCaixa(Caixa caixa) {
         if(caixa == null){

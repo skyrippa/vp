@@ -184,6 +184,11 @@ public class Fachada implements IFachada {
     public List<FuncionarioCaixa> getAllFuncionarioCaixa() {
         return this.serviceFuncionarioCaixa.getAllFuncionarioCaixa();
     }
+    
+    @Override
+    public List<FuncionarioCaixa> findByCpfFuncionario(String cpf) {
+        return this.serviceFuncionarioCaixa.findByCpfFuncionario(cpf);
+    }
     // ------------------- END ----------------------------//
     
     
@@ -233,6 +238,16 @@ public class Fachada implements IFachada {
     @Override
     public List<Produto> getAllProduto() {
         return this.serviceProduto.getAllProduto();
+    }
+    
+    @Override
+    public List<Produto> findByNomeProduto(String nomeProduto) {
+        return this.serviceProduto.findByNomeProduto(nomeProduto);
+    }
+    
+    @Override
+    public List<Produto> findByCodigoBarras(int codigoBarras) {
+        return this.serviceProduto.findByCodigoBarras(codigoBarras);
     }
     // ------------------- END ----------------------------//
 }

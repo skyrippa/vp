@@ -5,7 +5,6 @@
  */
 package br.com.ifba.vp.fornecedor.service;
 
-import br.com.ifba.vp.fornecedor.service.*;
 import br.com.ifba.vp.fornecedor.dao.DaoFornecedor;
 import br.com.ifba.vp.fornecedor.dao.IDaoFornecedor;
 import br.com.ifba.vp.fornecedor.model.Fornecedor;
@@ -29,8 +28,6 @@ public class ServiceFornecedor extends IServiceFornecedor {
     public final static String FORNECEDOR_INVALIDO = "Fornecedor inválido";
     
     private final IDaoFornecedor daoFornecedor = new DaoFornecedor();
-    
-
 
     @Override
     public Fornecedor saveFornecedor(Fornecedor fornecedor) {

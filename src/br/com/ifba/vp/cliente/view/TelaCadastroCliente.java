@@ -8,8 +8,6 @@ import br.com.ifba.vp.funcionario.view.TelaFuncionario;
 import br.com.ifba.vp.cliente.model.Cliente;
 import br.com.ifba.vp.infraestructure.service.Singleton;
 import br.com.ifba.vp.infraestructure.support.StringUtil;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 /**
  *
@@ -343,8 +341,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
         Cliente cliente = new Cliente();
 
-        //verifica se o cliente é válido
-        if(validaCampos() == true){
+        //verifica se o cliente é validado
+        if (validaCampos() == true) {
             
             //Inserindo os dados aos atributos do objeto
             cliente.setNome(this.textFieldNome.getText());
