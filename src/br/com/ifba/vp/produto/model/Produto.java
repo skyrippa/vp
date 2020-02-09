@@ -21,16 +21,18 @@ public class Produto extends AbstractEntity {
     
     @Column(name="nome_produto", length=100, nullable=false) //not null
     private String nomeProduto;
-    //@Column(name="lote", length=100, nullable=false) //not null
+    
     private int lote;
-    //@Column(name="preco", length=100, nullable=false) //not null
+
     private double preco;
-    //@Column(name="genero", length=100, nullable=false) //not null
+
     private String genero;
-    //@Column(name="secao", length=100, nullable=false) //not null
+
     private int secao;
+
     @Column(name="data_validade", length=100, nullable=false) //not null
     private String dataValidade;
+
     @Column(name="codigo_barras", length=100, nullable=false) //not null
     private int codigoBarras;
 
@@ -90,6 +92,4 @@ public class Produto extends AbstractEntity {
     public void setCodigoBarras(int codigoBarras) {
         this.codigoBarras = codigoBarras;
     }
-
-        
 }

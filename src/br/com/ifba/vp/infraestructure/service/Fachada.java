@@ -20,14 +20,6 @@ import br.com.ifba.vp.funcionarioCaixa.service.ServiceFuncionarioCaixa;
 import br.com.ifba.vp.gerente.model.Gerente;
 import br.com.ifba.vp.gerente.service.IServiceGerente;
 import br.com.ifba.vp.gerente.service.ServiceGerente;
-// classes Endereco
-import br.com.ifba.vp.infraestructure.endereco.model.Endereco;
-import br.com.ifba.vp.infraestructure.endereco.service.IServiceEndereco;
-import br.com.ifba.vp.infraestructure.endereco.service.ServiceEndereco;
-// classes Telefone
-import br.com.ifba.vp.infraestructure.telefone.model.Telefone;
-import br.com.ifba.vp.infraestructure.telefone.service.IServiceTelefone;
-import br.com.ifba.vp.infraestructure.telefone.service.ServiceTelefone;
 // classes Produto
 import br.com.ifba.vp.produto.model.Produto;
 import br.com.ifba.vp.produto.service.IServiceProduto;
@@ -36,56 +28,6 @@ import br.com.ifba.vp.produto.service.ServiceProduto;
 import java.util.List;
 
 public class Fachada implements IFachada {
-    
-    //------------------- ENDEREÇO ----------------------------//
-    private final IServiceEndereco serviceEndereco = new ServiceEndereco();
-    
-    @Override
-    public Endereco saveEndereco(Endereco endereco) {
-        return this.serviceEndereco.saveEndereco(endereco);
-    }
-
-    @Override
-    public Endereco updateEndereco(Endereco endereco) {
-        return this.serviceEndereco.updateEndereco(endereco);
-    }
-
-    @Override
-    public void deleteEndereco(Endereco endereco) {
-        this.serviceEndereco.deleteEndereco(endereco);
-    }
-
-    @Override
-    public List<Endereco> getAllEndereco() {
-        return this.serviceEndereco.getAllEndereco();
-    }
-    // ------------------- END ----------------------------//
-    
-    
-    //-------------------- TELEFONE -------------------------//
-    private final IServiceTelefone serviceTelefone = new ServiceTelefone();
-    
-    @Override
-    public Telefone saveTelefone(Telefone telefone) {
-        return this.serviceTelefone.saveTelefone(telefone);
-    }
-    
-    @Override
-    public Telefone updateTelefone(Telefone telefone) {
-        return this.serviceTelefone.updateTelefone(telefone);
-    }
-    
-    @Override
-    public void deleteTelefone(Telefone telefone) {
-        this.serviceTelefone.deleteTelefone(telefone);
-    }
-    
-    @Override
-    public List<Telefone> getAllTelefone() {
-        return this.serviceTelefone.getAllTelefone();
-    }
-    // ------------------- END ----------------------------//
-    
     
     //-------------------- CAIXA -------------------------//
     private final IServiceCaixa serviceCaixa = new ServiceCaixa();

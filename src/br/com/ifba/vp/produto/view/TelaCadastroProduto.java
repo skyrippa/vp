@@ -5,14 +5,9 @@
  */
 package br.com.ifba.vp.produto.view;
 import br.com.ifba.vp.funcionario.view.TelaFuncionario;
-import br.com.ifba.vp.caixa.model.Caixa;
 import br.com.ifba.vp.infraestructure.service.Singleton;
 import br.com.ifba.vp.infraestructure.support.StringUtil;
 import br.com.ifba.vp.produto.model.Produto;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 /**
  *

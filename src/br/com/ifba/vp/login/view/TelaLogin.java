@@ -8,11 +8,8 @@ package br.com.ifba.vp.login.view;
 import br.com.ifba.vp.gerente.view.TelaGerente;
 import br.com.ifba.vp.funcionario.view.TelaFuncionario;
 import br.com.ifba.vp.funcionarioCaixa.model.FuncionarioCaixa;
-import br.com.ifba.vp.infraestructure.service.Fachada;
-import br.com.ifba.vp.infraestructure.service.IFachada;
 import br.com.ifba.vp.infraestructure.service.Singleton;
-import java.util.ArrayList;
-import java.util.List;
+import br.com.ifba.vp.infraestructure.support.StringUtil;
 import javax.swing.JOptionPane;
 
 /**
@@ -167,8 +164,9 @@ public class TelaLogin extends javax.swing.JFrame{
 
     // validar campos da tela
     private boolean validarCampos(){
+        StringUtil util = StringUtil.getInstance();
         
-        if (this.textFieldCpf.getText().equals("") || this.passwordFieldSenha.getText().equals("")){
+        if (util.isNullOrEmpty(this.textFieldCpf.getText()) || util.isNullOrEmpty(this.passwordFieldSenha.getText())) {
             JOptionPane.showMessageDialog(null, "Todos os campos são obrigatórios.", "CAMPOS OBRIGATÓRIOS", JOptionPane.ERROR_MESSAGE);
             return false;
         }

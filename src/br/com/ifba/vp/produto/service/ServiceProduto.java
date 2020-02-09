@@ -59,7 +59,8 @@ public class ServiceProduto extends IServiceProduto {
             throw new BusinessException(PRODUTO_NAO_EXISTE);
         }else{
             this.daoProduto.delete(produto);
-        }    }
+        }   
+    }
 
     @Override
     public Produto updateProduto(Produto produto) {
@@ -77,7 +78,7 @@ public class ServiceProduto extends IServiceProduto {
         }else {
             //Atualiza o objeto na base de dados
             return this.daoProduto.update(produto);
-           }
+        }
     }
 
     @Override

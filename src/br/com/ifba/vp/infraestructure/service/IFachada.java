@@ -5,33 +5,11 @@ import br.com.ifba.vp.cliente.model.Cliente;
 import br.com.ifba.vp.fornecedor.model.Fornecedor;
 import br.com.ifba.vp.funcionarioCaixa.model.FuncionarioCaixa;
 import br.com.ifba.vp.gerente.model.Gerente;
-import br.com.ifba.vp.infraestructure.endereco.model.Endereco;
-import br.com.ifba.vp.infraestructure.telefone.model.Telefone;
 import br.com.ifba.vp.produto.model.Produto;
 
 import java.util.List;
 
 public interface IFachada {
-    
-    //--------------- Endereço ----------------------------//
-    // Método que salva um Endereço na base de dados
-    public abstract Endereco saveEndereco(Endereco endereco);
-    // Método que salva um Endereço na base de dados
-    public abstract Endereco updateEndereco(Endereco endereco);
-    // Método que deleta um Endereço da base de dados
-    public abstract void deleteEndereco(Endereco endereco);
-    // Método que retorna todos Endereços da base de dados
-    public abstract List<Endereco> getAllEndereco();
-    
-    //--------------- Telefone ---------------------
-    // Método que salva um Telefone na base de dados
-    public abstract Telefone saveTelefone(Telefone telefone);
-    // Método que salva um Telefone na base de dados
-    public abstract Telefone updateTelefone(Telefone telefone);
-    // Método que deleta um Telefone da base de dados
-    public abstract void deleteTelefone(Telefone telefone);
-    // Método que retorna todos Telefones da base de dados
-    public abstract List<Telefone> getAllTelefone();
     
     //---------------- Caixa -----------------------
     // Método que salva um Caixa na base de dados

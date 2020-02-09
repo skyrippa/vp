@@ -16,13 +16,13 @@ public class DaoProduto extends BaseDao<Produto> implements IDaoProduto {
     
     @Override
     public List <Produto> findByNomeProduto(String nomeProduto){
-        String query = "select p from Produto p where upper(p.nomeProduto) like upper('" + nomeProduto +"%')";
+        String query = "SELECT produto FROM Produto produto WHERE UPPER(produto.nomeProduto) LIKE UPPER('" + nomeProduto +"%')";
         return BaseDao.entityManager.createQuery(query).getResultList();
     }
 
     @Override
     public List<Produto> findByCodigoBarras(Integer codigoBarras) {
-        String query = "select p from Produto p where upper(p.codigoBarras) like upper('" + codigoBarras +"%')";
+        String query = "SELECT produto FROM Produto produto WHERE (produto.codigoBarras) LIKE ('" + codigoBarras +"%')";
         return BaseDao.entityManager.createQuery(query).getResultList();
     }
 }

@@ -5,16 +5,11 @@
  */
 package br.com.ifba.vp.infraestructure.pessoa.model;
 
-import br.com.ifba.vp.infraestructure.endereco.model.Endereco;
 import br.com.ifba.vp.infraestructure.model.AbstractEntity;
-import br.com.ifba.vp.infraestructure.telefone.model.Telefone;
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  *
