@@ -5,11 +5,8 @@
  */
 package br.com.ifba.vp.infraestructure.endereco.dao;
 
-import br.com.ifba.vp.infraestructure.endereco.dao.*;
-import br.com.ifba.vp.gerente.dao.*;
 import br.com.ifba.vp.infraestructure.endereco.model.Endereco;
 import br.com.ifba.vp.infraestructure.dao.IBaseDao;
-import java.util.List;
 
 /**
  *
@@ -17,19 +14,4 @@ import java.util.List;
  */
 public interface IDaoEndereco extends IBaseDao<Endereco>{
 
-     /**
-     *
-     * @param endereco
-     * @return
-     */
-//    public abstract boolean saveCliente(Cliente cliente);
-    // deletar o cliente
-//    public abstract boolean deleteCliente(Cliente cliente);
-//    // atualizar o cliente
-//    public abstract boolean updateCliente(Cliente cliente);
-//    // retornar todos os clientes
-//    public abstract java.util.List<Cliente> takeAll();
-//    // retornar cliente por id
-//    public List<Cliente> FindById(String cliente);
-    
 }

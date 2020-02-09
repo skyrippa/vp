@@ -7,8 +7,6 @@ package br.com.ifba.vp.produto.view;
 import br.com.ifba.vp.gerente.view.TelaGerente;
 import br.com.ifba.vp.funcionario.view.TelaFuncionario;
 import br.com.ifba.vp.caixa.model.Caixa;
-import Model.DAO.ProdutosDAO;
-import br.com.ifba.vp.produto.model.Produtos;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -185,29 +183,29 @@ int i;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
-        
-        ProdutosDAO Pdao = new ProdutosDAO();
-        List<Produtos> PP = new ArrayList();       
-        PP = Pdao.BuscaNome(jTextField1.getText());
-        int y = 0;
-        Caixa caixa = new Caixa();
+//        
+//        ProdutosDAO Pdao = new ProdutosDAO();
+//        List<Produtos> PP = new ArrayList();       
+//        PP = Pdao.BuscaNome(jTextField1.getText());
+//        int y = 0;
+//        Caixa caixa = new Caixa();
         
         //jLabel3.setText(String.valueOf(caixa.getDebito()));
         
-        for(int i = 0; i < PP.size(); i++){
-            y++;
-            modelo.addRow(new Object[]{
-                
-                PP.get(i).getNomeProduto(),
-                PP.get(i).getPreco(),
-                PP.get(i).getSecao(),
-                PP.get(i).getDataValidade(),
-            });
-       
-        }
-        if(y == 0){
-            JOptionPane.showMessageDialog(null, "Produto não cadastrado!");
-        }
+//        for(int i = 0; i < PP.size(); i++){
+//            y++;
+//            modelo.addRow(new Object[]{
+//                
+//                PP.get(i).getNomeProduto(),
+//                PP.get(i).getPreco(),
+//                PP.get(i).getSecao(),
+//                PP.get(i).getDataValidade(),
+//            });
+//       
+//        }
+//        if(y == 0){
+//            JOptionPane.showMessageDialog(null, "Produto não cadastrado!");
+//        }
         
 //        for(Produtos P: Pdao.BuscaNome(jTextField1.getText())){
 //            

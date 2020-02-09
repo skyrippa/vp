@@ -7,15 +7,17 @@ package br.com.ifba.vp.login.view;
 
 import br.com.ifba.vp.gerente.view.TelaGerente;
 import br.com.ifba.vp.funcionario.view.TelaFuncionario;
-import Model.DAO.FuncionarioCaixaDAO;
 import br.com.ifba.vp.funcionarioCaixa.model.FuncionarioCaixa;
+import br.com.ifba.vp.infraestructure.service.Fachada;
+import br.com.ifba.vp.infraestructure.service.IFachada;
+import br.com.ifba.vp.infraestructure.service.Singleton;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author lab02
+ * @author iagobm
  */
 public class TelaLogin extends javax.swing.JFrame{
 
@@ -38,11 +40,11 @@ public class TelaLogin extends javax.swing.JFrame{
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        textFieldCpf = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        passwordFieldSenha = new javax.swing.JPasswordField();
+        buttonEntrar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -67,12 +69,6 @@ public class TelaLogin extends javax.swing.JFrame{
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("CPF");
         jLabel1.setMaximumSize(new java.awt.Dimension(36, 14));
         jLabel1.setMinimumSize(new java.awt.Dimension(36, 14));
@@ -83,17 +79,11 @@ public class TelaLogin extends javax.swing.JFrame{
         jLabel2.setMinimumSize(new java.awt.Dimension(36, 14));
         jLabel2.setPreferredSize(new java.awt.Dimension(36, 14));
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        buttonEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Login.png"))); // NOI18N
+        buttonEntrar.setText("Entrar");
+        buttonEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Login.png"))); // NOI18N
-        jButton1.setText("Entrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonEntrarActionPerformed(evt);
             }
         });
 
@@ -110,13 +100,13 @@ public class TelaLogin extends javax.swing.JFrame{
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
-                        .addComponent(jButton1))
+                        .addComponent(buttonEntrar))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(passwordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -136,13 +126,13 @@ public class TelaLogin extends javax.swing.JFrame{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(buttonEntrar)
                 .addGap(85, 85, 85))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
@@ -175,65 +165,46 @@ public class TelaLogin extends javax.swing.JFrame{
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        FuncionarioCaixaDAO fdao = new FuncionarioCaixaDAO();
-        List <FuncionarioCaixa> FC = new ArrayList();
+    // validar campos da tela
+    private boolean validaCampos(){
         
-        long cpf = 0; //= Long.parseLong(jTextField1.getText());
-        int senha = 0; //= Integer.parseInt(jPasswordField1.getText());
-        int i = 2;
-        
-        try{
-            
-            cpf = Long.parseLong(jTextField1.getText());
-            senha = Integer.parseInt(jPasswordField1.getText());
-            
-        }catch(NumberFormatException ex){
-            
-            JOptionPane.showMessageDialog(null, "Digite apenas números inteiros!");
-            i = 3;
-            
+        if (this.textFieldCpf.getText().equals("") || this.passwordFieldSenha.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Todos os campos são obrigatórios.", "CAMPOS OBRIGATÓRIOS", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
         
-        try{
-            for(FuncionarioCaixa F: fdao.Login()){
-                
-                
-                if(F.getCPF() == cpf && F.getSenha() == senha){
-                    i  = 1;
-                }
-                
-
+        return true;        
+    }
+    
+    private void buttonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEntrarActionPerformed
+        
+        String cpf = this.textFieldCpf.getText();
+        String senha = this.passwordFieldSenha.getText();
+        
+        if (!this.validaCampos()) {
+            JOptionPane.showMessageDialog(null, "Usuario não cadastrado!");   
+        }
+        
+        // Buscando funcionariosCaixa cadastrados e comparando-os com a senha e cpf inseridos
+        // pelo usuário na tela de login
+        for(FuncionarioCaixa funcionarioCaixa: Singleton.getInstance().getAllFuncionarioCaixa()){
+            
+            // Caso a senha e cpf chequem com uma da base de dados, a tela de funcionário é chamada
+            if(funcionarioCaixa.getCpf().equals(cpf) && funcionarioCaixa.getSenha().equals(senha)) {
+                new TelaFuncionario().setVisible(true);
+                this.dispose();
             }
-        }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(null, "Digite apenas números inteiros!");
         }
-             
-        if(i == 1 ){
-            new TelaFuncionario().setVisible(true);
-            this.dispose();
-            
-        }
-        if(cpf == 12345678911L && senha == 1221){
+        
+        // Caso a senha e cpf seja para gerente, a tela de gerente é instanciada
+        if (cpf.equals("1234") && senha.equals("1234")) {
             new TelaGerente().setVisible(true);
             this.dispose();
-            i++;
+        } else {
+            // Em nenhum dos casos, é mostrada uma mensagem de usuário não cadastrado
+            JOptionPane.showMessageDialog(null, "Usuario não cadastrado!");   
         }
-        if(i == 2){
-            JOptionPane.showMessageDialog(null, "Usuario não cadastrado!");
-        }
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_buttonEntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,7 +242,7 @@ public class TelaLogin extends javax.swing.JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonEntrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -279,7 +250,7 @@ public class TelaLogin extends javax.swing.JFrame{
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField passwordFieldSenha;
+    private javax.swing.JTextField textFieldCpf;
     // End of variables declaration//GEN-END:variables
 }

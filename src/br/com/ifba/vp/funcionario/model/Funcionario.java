@@ -5,7 +5,6 @@
  */
 package br.com.ifba.vp.funcionario.model;
 
-import br.com.ifba.vp.infraestructure.pessoa.model.Pessoa;
 import br.com.ifba.vp.infraestructure.pessoa.model.PessoaFisica;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -21,7 +20,7 @@ import javax.persistence.InheritanceType;
 public abstract class Funcionario extends PessoaFisica {
     
     private String email;
-    private int Senha;
+    private String Senha;
 
     // Métodos Acessores
     public String getEmail() {
@@ -32,11 +31,11 @@ public abstract class Funcionario extends PessoaFisica {
         this.email = email;
     }
 
-    public int getSenha() {
+    public String getSenha() {
         return Senha;
     }
 
-    public void setSenha(int Senha) {
+    public void setSenha(String Senha) {
         this.Senha = Senha;
     }
 }

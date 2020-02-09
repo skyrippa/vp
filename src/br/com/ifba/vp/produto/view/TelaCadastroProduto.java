@@ -6,8 +6,9 @@
 package br.com.ifba.vp.produto.view;
 import br.com.ifba.vp.funcionario.view.TelaFuncionario;
 import br.com.ifba.vp.caixa.model.Caixa;
-import Model.DAO.ProdutosDAO;
-import br.com.ifba.vp.produto.model.Produtos;
+import br.com.ifba.vp.infraestructure.service.Singleton;
+import br.com.ifba.vp.infraestructure.support.StringUtil;
+import br.com.ifba.vp.produto.model.Produto;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 /**
  *
- * @author Icaro
+ * @author iagobm
  */
 public class TelaCadastroProduto extends javax.swing.JFrame {
 
@@ -38,21 +39,21 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        textFieldNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        textFieldLote = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        textFieldPreco = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        textFieldCodigoBarras = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        textFieldDataValidade = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        textFieldGenero = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        textFieldSecao = new javax.swing.JTextField();
+        buttonSalvar = new javax.swing.JButton();
+        buttonCancelar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -79,19 +80,19 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
         jLabel9.setText("Seção");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/salvar.png"))); // NOI18N
-        jButton1.setText("Salvar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/salvar.png"))); // NOI18N
+        buttonSalvar.setText("Salvar");
+        buttonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonSalvarActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Cancelar.png"))); // NOI18N
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Cancelar.png"))); // NOI18N
+        buttonCancelar.setText("Cancelar");
+        buttonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonCancelarActionPerformed(evt);
             }
         });
 
@@ -109,7 +110,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
@@ -118,7 +119,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel11)
@@ -132,7 +133,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 526, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -145,31 +146,31 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textFieldDataValidade, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+                                .addComponent(textFieldLote, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textFieldGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField8))
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(textFieldSecao))
+                            .addComponent(textFieldPreco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(buttonSalvar)
                                 .addGap(65, 65, 65)
-                                .addComponent(jButton2)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jTextField4))))
+                                .addComponent(buttonCancelar)
+                                .addGap(0, 95, Short.MAX_VALUE))
+                            .addComponent(textFieldCodigoBarras))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -179,33 +180,33 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFieldLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFieldPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textFieldGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel9)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(textFieldSecao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFieldDataValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFieldCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(58, 58, 58)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonSalvar)
+                    .addComponent(buttonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
 
@@ -224,41 +225,84 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        List <Produtos> PR = new ArrayList();
-        Produtos p = new Produtos();
-        ProdutosDAO PD = new ProdutosDAO();
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
-
-        try{
-            
-            p.setNomeProduto(jTextField1.getText());
-            p.setLote(Integer.parseInt(jTextField2.getText()));
-            p.setPreco(Double.parseDouble(jTextField3.getText()));
-            p.setGenero(jTextField7.getText());
-            p.setSecao(Integer.parseInt(jTextField8.getText()));
-            p.setDataValidade(jTextField6.getText());
-            p.setCodigoBarras(Integer.parseInt(jTextField4.getText()));
-            
-            Caixa caixa = new Caixa();
-            caixa.setDebito(p.getPreco());
-            
-            PD.create(p);
-   
-        }catch(java.lang.NumberFormatException ex){
-            
-            JOptionPane.showMessageDialog(null, "Um ou mais campos númericos foram preenchidos com pontos, espaços ou caracteres!");
+    private boolean validarCampos() {
+        StringUtil util = StringUtil.getInstance();
         
+        //checando campos
+        if(util.isNullOrEmpty(this.textFieldNome.getText())) {
+            JOptionPane.showMessageDialog(null, "Preencha o campo Nome de Produto.");
+            return false;
         }
-      
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        if(util.isNullOrEmpty(this.textFieldLote.getText())) {
+            JOptionPane.showMessageDialog(null, "Preencha o campo Lote do Produto.");
+            return false;
+        }
+        
+        if(util.isNullOrEmpty(this.textFieldPreco.getText())) {
+            JOptionPane.showMessageDialog(null, "Preencha o campo Preço do Produto.");
+            return false;
+        }
+        
+        if(util.isNullOrEmpty(this.textFieldGenero.getText())) {
+            JOptionPane.showMessageDialog(null, "Preencha o campo Genero do Produto.");
+            return false;
+        }
+        
+        if(util.isNullOrEmpty(this.textFieldSecao.getText())) {
+            JOptionPane.showMessageDialog(null, "Preencha o campo Seção do Produto.");
+            return false;
+        }
+        
+        if(util.isNullOrEmpty(this.textFieldDataValidade.getText())) {
+            JOptionPane.showMessageDialog(null, "Preencha o campo Data de Validade do Produto.");
+            return false;
+        }
+        
+        if(util.isNullOrEmpty(this.textFieldCodigoBarras.getText())){
+            JOptionPane.showMessageDialog(null, "Preencha o campo Código de Barras do Produto.");
+            return false;
+        }
+       
+        return true;
+    }
+    
+    private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
+        Produto produto = new Produto();
+        
+        //Verifica se o produto é válido
+        if(this.validarCampos() == true){
+            
+            //Inserindo os dados aos atributos do objeto
+            produto.setNomeProduto(this.textFieldNome.getText());
+            produto.setLote(Integer.parseInt(this.textFieldLote.getText()));
+            produto.setPreco(Double.parseDouble(this.textFieldPreco.getText()));
+            produto.setGenero(this.textFieldGenero.getText());
+            produto.setSecao(Integer.parseInt(this.textFieldSecao.getText()));
+            produto.setDataValidade(this.textFieldDataValidade.getText());
+            produto.setCodigoBarras(Integer.parseInt(this.textFieldCodigoBarras.getText()));
+            
+            
+            //salvando na base de dados
+            if(Singleton.getInstance().saveProduto(produto) == produto){
+                
+                JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
+               
+                //Fecha a tela de cadastro de produto
+                new TelaFuncionario().setVisible(true);
+                this.dispose();
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Erro ao salvar");
+            }
+        }
+    }//GEN-LAST:event_buttonSalvarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
         // TODO add your handling code here:
         new TelaFuncionario().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buttonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -296,8 +340,8 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton buttonCancelar;
+    private javax.swing.JButton buttonSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -310,12 +354,12 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField textFieldCodigoBarras;
+    private javax.swing.JTextField textFieldDataValidade;
+    private javax.swing.JTextField textFieldGenero;
+    private javax.swing.JTextField textFieldLote;
+    private javax.swing.JTextField textFieldNome;
+    private javax.swing.JTextField textFieldPreco;
+    private javax.swing.JTextField textFieldSecao;
     // End of variables declaration//GEN-END:variables
 }

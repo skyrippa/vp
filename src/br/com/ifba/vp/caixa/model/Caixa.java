@@ -6,7 +6,7 @@
 package br.com.ifba.vp.caixa.model;
 
 import br.com.ifba.vp.infraestructure.model.AbstractEntity;
-import javax.persistence.Column;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="caixa")
-public class Caixa extends AbstractEntity {
+public class Caixa extends AbstractEntity implements Serializable {
     
     //@Column(name="debito", length=100, nullable=false) //not null
     private double debito;

@@ -13,7 +13,7 @@ import br.com.ifba.vp.funcionario.view.TelaCadastroFuncionario;
 
 /**
  *
- * @author lab02
+ * @author iagobm
  */
 public class TelaGerente extends javax.swing.JFrame {
 
@@ -34,14 +34,14 @@ public class TelaGerente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        pesquisarFuncionario = new javax.swing.JButton();
-        cadastroFuncionario = new javax.swing.JButton();
-        cadastroFornecedor = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        buttonPesquisarFuncionario = new javax.swing.JButton();
+        buttonCadastrarFuncionario = new javax.swing.JButton();
+        buttonCadastrarFornecedor = new javax.swing.JButton();
+        buttonVerificarEstoque = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        sairTelaGerente = new javax.swing.JButton();
+        buttonSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela do Gerente");
@@ -51,54 +51,54 @@ public class TelaGerente extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pesquisarFuncionario.setBackground(new java.awt.Color(255, 255, 255));
-        pesquisarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/funcionarios.png"))); // NOI18N
-        pesquisarFuncionario.setText("Pesquisar Funcionário");
-        pesquisarFuncionario.setMaximumSize(new java.awt.Dimension(111, 35));
-        pesquisarFuncionario.setMinimumSize(new java.awt.Dimension(111, 35));
-        pesquisarFuncionario.setPreferredSize(new java.awt.Dimension(111, 35));
-        pesquisarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+        buttonPesquisarFuncionario.setBackground(new java.awt.Color(255, 255, 255));
+        buttonPesquisarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/funcionarios.png"))); // NOI18N
+        buttonPesquisarFuncionario.setText("Pesquisar Funcionário");
+        buttonPesquisarFuncionario.setMaximumSize(new java.awt.Dimension(111, 35));
+        buttonPesquisarFuncionario.setMinimumSize(new java.awt.Dimension(111, 35));
+        buttonPesquisarFuncionario.setPreferredSize(new java.awt.Dimension(111, 35));
+        buttonPesquisarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pesquisarFuncionarioActionPerformed(evt);
+                buttonPesquisarFuncionarioActionPerformed(evt);
             }
         });
-        jPanel1.add(pesquisarFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 220, -1));
+        jPanel1.add(buttonPesquisarFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 220, -1));
 
-        cadastroFuncionario.setBackground(new java.awt.Color(255, 255, 255));
-        cadastroFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/novoFuncionario.png"))); // NOI18N
-        cadastroFuncionario.setText("Cadastrar Funcionário");
-        cadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
+        buttonCadastrarFuncionario.setBackground(new java.awt.Color(255, 255, 255));
+        buttonCadastrarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/novoFuncionario.png"))); // NOI18N
+        buttonCadastrarFuncionario.setText("Cadastrar Funcionário");
+        buttonCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastroFuncionarioActionPerformed(evt);
+                buttonCadastrarFuncionarioActionPerformed(evt);
             }
         });
-        jPanel1.add(cadastroFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 220, -1));
+        jPanel1.add(buttonCadastrarFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 220, -1));
 
-        cadastroFornecedor.setBackground(new java.awt.Color(255, 255, 255));
-        cadastroFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fornecedores.png"))); // NOI18N
-        cadastroFornecedor.setText("Cadastrar Fornecedor");
-        cadastroFornecedor.setMaximumSize(new java.awt.Dimension(111, 35));
-        cadastroFornecedor.setMinimumSize(new java.awt.Dimension(111, 35));
-        cadastroFornecedor.setPreferredSize(new java.awt.Dimension(111, 35));
-        cadastroFornecedor.addActionListener(new java.awt.event.ActionListener() {
+        buttonCadastrarFornecedor.setBackground(new java.awt.Color(255, 255, 255));
+        buttonCadastrarFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fornecedores.png"))); // NOI18N
+        buttonCadastrarFornecedor.setText("Cadastrar Fornecedor");
+        buttonCadastrarFornecedor.setMaximumSize(new java.awt.Dimension(111, 35));
+        buttonCadastrarFornecedor.setMinimumSize(new java.awt.Dimension(111, 35));
+        buttonCadastrarFornecedor.setPreferredSize(new java.awt.Dimension(111, 35));
+        buttonCadastrarFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastroFornecedorActionPerformed(evt);
+                buttonCadastrarFornecedorActionPerformed(evt);
             }
         });
-        jPanel1.add(cadastroFornecedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 220, -1));
+        jPanel1.add(buttonCadastrarFornecedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 220, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/VerEstoque.png"))); // NOI18N
-        jButton1.setText("Verificar Estoque");
-        jButton1.setMaximumSize(new java.awt.Dimension(111, 35));
-        jButton1.setMinimumSize(new java.awt.Dimension(111, 35));
-        jButton1.setPreferredSize(new java.awt.Dimension(111, 35));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonVerificarEstoque.setBackground(new java.awt.Color(255, 255, 255));
+        buttonVerificarEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/VerEstoque.png"))); // NOI18N
+        buttonVerificarEstoque.setText("Verificar Estoque");
+        buttonVerificarEstoque.setMaximumSize(new java.awt.Dimension(111, 35));
+        buttonVerificarEstoque.setMinimumSize(new java.awt.Dimension(111, 35));
+        buttonVerificarEstoque.setPreferredSize(new java.awt.Dimension(111, 35));
+        buttonVerificarEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonVerificarEstoqueActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 220, -1));
+        jPanel1.add(buttonVerificarEstoque, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 220, -1));
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -108,11 +108,11 @@ public class TelaGerente extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Gerente.png"))); // NOI18N
 
-        sairTelaGerente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout.png"))); // NOI18N
-        sairTelaGerente.setText("Sair");
-        sairTelaGerente.addActionListener(new java.awt.event.ActionListener() {
+        buttonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout.png"))); // NOI18N
+        buttonSair.setText("Sair");
+        buttonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sairTelaGerenteActionPerformed(evt);
+                buttonSairActionPerformed(evt);
             }
         });
 
@@ -126,7 +126,7 @@ public class TelaGerente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 281, Short.MAX_VALUE)
-                .addComponent(sairTelaGerente)
+                .addComponent(buttonSair)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -134,7 +134,7 @@ public class TelaGerente extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(sairTelaGerente)
+                    .addComponent(buttonSair)
                     .addComponent(jLabel1)
                     .addComponent(jLabel9))
                 .addGap(28, 28, 28))
@@ -157,35 +157,35 @@ public class TelaGerente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void sairTelaGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairTelaGerenteActionPerformed
+    private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
         // TODO add your handling code here:
         new TelaLogin().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_sairTelaGerenteActionPerformed
+    }//GEN-LAST:event_buttonSairActionPerformed
 
-    private void cadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroFuncionarioActionPerformed
+    private void buttonCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarFuncionarioActionPerformed
         // TODO add your handling code here:
         new TelaCadastroFuncionario().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_cadastroFuncionarioActionPerformed
+    }//GEN-LAST:event_buttonCadastrarFuncionarioActionPerformed
 
-    private void cadastroFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroFornecedorActionPerformed
+    private void buttonCadastrarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarFornecedorActionPerformed
         // TODO add your handling code here:
         new TelaCadastroFornecedor().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_cadastroFornecedorActionPerformed
+    }//GEN-LAST:event_buttonCadastrarFornecedorActionPerformed
 
-    private void pesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarFuncionarioActionPerformed
+    private void buttonPesquisarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarFuncionarioActionPerformed
         // TODO add your handling code here:
         new PesquisarFuncionario().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_pesquisarFuncionarioActionPerformed
+    }//GEN-LAST:event_buttonPesquisarFuncionarioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonVerificarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVerificarEstoqueActionPerformed
         // TODO add your handling code here:
         new TelaVerificarEstoque(2).setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonVerificarEstoqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,14 +223,14 @@ public class TelaGerente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cadastroFornecedor;
-    private javax.swing.JButton cadastroFuncionario;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonCadastrarFornecedor;
+    private javax.swing.JButton buttonCadastrarFuncionario;
+    private javax.swing.JButton buttonPesquisarFuncionario;
+    private javax.swing.JButton buttonSair;
+    private javax.swing.JButton buttonVerificarEstoque;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JButton pesquisarFuncionario;
-    private javax.swing.JButton sairTelaGerente;
     // End of variables declaration//GEN-END:variables
 }

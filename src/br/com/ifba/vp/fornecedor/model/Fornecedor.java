@@ -17,5 +17,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name="fornecedor")
 public class Fornecedor extends PessoaJuridica {
+    private String fax;
 
+    // Métodos Acessores
+    public String getFax() {
+        return fax;
+    }
+
+    public void setFax(String fax) {
+        this.fax = fax;
+    }
+    
+    
 }

@@ -77,43 +77,43 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtnomeFunc" min="-2" pref="313" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtsenhaFunc" min="-2" pref="313" max="-2" attributes="0"/>
-                      <Component id="txtemailFunc" min="-2" pref="313" max="-2" attributes="0"/>
-                      <Component id="txtEspecializa" alignment="0" min="-2" pref="313" max="-2" attributes="0"/>
+                      <Component id="textFieldNomeCompleto" min="-2" pref="313" max="-2" attributes="0"/>
+                      <Component id="comboBoxSexo" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="passwordFieldSenha" min="-2" pref="313" max="-2" attributes="0"/>
+                      <Component id="textFieldEmail" min="-2" pref="313" max="-2" attributes="0"/>
+                      <Component id="textFieldEspecializacao" alignment="0" min="-2" pref="313" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="txtRgFunc" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="textFieldRG" min="-2" pref="170" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtCPF" min="-2" pref="140" max="-2" attributes="0"/>
+                          <Component id="textFieldCpf" min="-2" pref="140" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="txtTelFunc" alignment="0" min="-2" pref="313" max="-2" attributes="0"/>
+                      <Component id="textFieldTelefone" alignment="0" min="-2" pref="313" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txtCidade" alignment="0" pref="250" max="32767" attributes="0"/>
-                              <Component id="txtRuaFunc" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textFieldCidade" alignment="0" pref="250" max="32767" attributes="0"/>
+                              <Component id="textFieldRua" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtNumFunc" min="-2" pref="70" max="-2" attributes="0"/>
+                          <Component id="textFieldNumero" min="-2" pref="70" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txtCep" alignment="0" pref="215" max="32767" attributes="0"/>
-                              <Component id="txtBairro" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textFieldCep" alignment="0" pref="215" max="32767" attributes="0"/>
+                              <Component id="textFieldBairro" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jComboBox1" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="comboBoxEstado" min="-2" pref="143" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonSalvar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="buttonCancelar" min="-2" pref="117" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="19" max="32767" attributes="0"/>
@@ -129,68 +129,68 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtnomeFunc" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldNomeCompleto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtsenhaFunc" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="passwordFieldSenha" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtemailFunc" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboBoxSexo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtRgFunc" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldRG" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldCpf" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtEspecializa" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldEspecializacao" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtTelFunc" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtRuaFunc" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldRua" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNumFunc" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldCidade" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboBoxEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCep" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldCep" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="buttonSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonCancelar" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="38" max="32767" attributes="0"/>
               </Group>
@@ -253,41 +253,23 @@
             <Property name="text" type="java.lang.String" value="Telefone"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtnomeFunc">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtnomeFuncActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JTextField" name="textFieldNomeCompleto">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtemailFunc">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtemailFuncActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JTextField" name="textFieldEmail">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCPF">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCPFActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JTextField" name="textFieldCpf">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtRgFunc">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRgFuncActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JTextField" name="textFieldRG">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtEspecializa">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEspecializaActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JTextField" name="textFieldEspecializacao">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCidade">
+        <Component class="javax.swing.JTextField" name="textFieldCidade">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtBairro">
+        <Component class="javax.swing.JTextField" name="textFieldBairro">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtRuaFunc">
+        <Component class="javax.swing.JTextField" name="textFieldRua">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNumFunc">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNumFuncActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JTextField" name="textFieldNumero">
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
@@ -350,7 +332,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="buttonCancelar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Images/Cancelar.png"/>
@@ -367,10 +349,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCancelarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="buttonSalvar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Images/salvar.png"/>
@@ -378,10 +360,10 @@
             <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSalvarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTelFunc">
+        <Component class="javax.swing.JTextField" name="textFieldTelefone">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
@@ -393,7 +375,7 @@
             <Property name="text" type="java.lang.String" value="Estado"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="comboBoxEstado">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="27">
@@ -439,11 +421,11 @@
             <Property name="text" type="java.lang.String" value="CEP"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCep">
+        <Component class="javax.swing.JTextField" name="textFieldCep">
         </Component>
-        <Component class="javax.swing.JPasswordField" name="txtsenhaFunc">
+        <Component class="javax.swing.JPasswordField" name="passwordFieldSenha">
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox2">
+        <Component class="javax.swing.JComboBox" name="comboBoxSexo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">

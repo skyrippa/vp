@@ -5,26 +5,22 @@
  */
 package br.com.ifba.vp.funcionario.view;
 
-import Model.DAO.ProdutosDAO;
 import br.com.ifba.vp.cliente.view.TelaCadastroCliente;
 import br.com.ifba.vp.produto.view.TelaCadastroProduto;
 import br.com.ifba.vp.login.view.TelaLogin;
 import br.com.ifba.vp.produto.view.TelaVerificarEstoque;
-import br.com.ifba.vp.produto.model.Produtos;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Icaro
+ * @author iagobm
  */
 public class TelaFuncionario extends javax.swing.JFrame {
-double precoTotal = 0;
     /**
      * Creates new form TelaFuncionario
      */
     public TelaFuncionario() {
-        precoTotal = 0;
         initComponents();
     }
 
@@ -41,18 +37,18 @@ double precoTotal = 0;
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        sairTelaGerente = new javax.swing.JButton();
+        buttonNovoCliente = new javax.swing.JButton();
+        buttonVerificarEstoque = new javax.swing.JButton();
+        buttonCadastrarProduto = new javax.swing.JButton();
+        buttonSair = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
+        textFieldCodigoBarras = new javax.swing.JTextField();
+        buttonBuscarProduto = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -75,35 +71,35 @@ double precoTotal = 0;
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/IconeVendedor.png"))); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/novoCliente.png"))); // NOI18N
-        jButton1.setText("Novo Cliente");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonNovoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/novoCliente.png"))); // NOI18N
+        buttonNovoCliente.setText("Novo Cliente");
+        buttonNovoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonNovoClienteActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/VerEstoque.png"))); // NOI18N
-        jButton2.setText("Verificar Estoque");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonVerificarEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/VerEstoque.png"))); // NOI18N
+        buttonVerificarEstoque.setText("Verificar Estoque");
+        buttonVerificarEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonVerificarEstoqueActionPerformed(evt);
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
-        jButton4.setText("Cadastrar Produto");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        buttonCadastrarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add.png"))); // NOI18N
+        buttonCadastrarProduto.setText("Cadastrar Produto");
+        buttonCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                buttonCadastrarProdutoActionPerformed(evt);
             }
         });
 
-        sairTelaGerente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout.png"))); // NOI18N
-        sairTelaGerente.setText("Sair");
-        sairTelaGerente.addActionListener(new java.awt.event.ActionListener() {
+        buttonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout.png"))); // NOI18N
+        buttonSair.setText("Sair");
+        buttonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sairTelaGerenteActionPerformed(evt);
+                buttonSairActionPerformed(evt);
             }
         });
 
@@ -117,13 +113,13 @@ double precoTotal = 0;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(209, 209, 209)
-                .addComponent(jButton1)
+                .addComponent(buttonNovoCliente)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(buttonVerificarEstoque)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(buttonCadastrarProduto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(sairTelaGerente)
+                .addComponent(buttonSair)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -133,10 +129,10 @@ double precoTotal = 0;
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton4)
-                            .addComponent(sairTelaGerente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(buttonNovoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonVerificarEstoque)
+                            .addComponent(buttonCadastrarProduto)
+                            .addComponent(buttonSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -192,13 +188,13 @@ double precoTotal = 0;
         jLabel1.setForeground(new java.awt.Color(0, 102, 255));
         jLabel1.setText("Código de Barras");
 
-        jButton5.setBackground(new java.awt.Color(0, 102, 255));
-        jButton5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("OK");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        buttonBuscarProduto.setBackground(new java.awt.Color(0, 102, 255));
+        buttonBuscarProduto.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        buttonBuscarProduto.setForeground(new java.awt.Color(255, 255, 255));
+        buttonBuscarProduto.setText("OK");
+        buttonBuscarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                buttonBuscarProdutoActionPerformed(evt);
             }
         });
 
@@ -213,9 +209,9 @@ double precoTotal = 0;
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textFieldCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(147, 147, 147))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -225,8 +221,8 @@ double precoTotal = 0;
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFieldCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -335,72 +331,37 @@ double precoTotal = 0;
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void popularTabelaProdutos() {
+        // preencher produtos cadastrados na tabela
+    }
+    
+    private void buttonNovoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoClienteActionPerformed
         // TODO add your handling code here:
         new TelaCadastroCliente().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonNovoClienteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buttonVerificarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVerificarEstoqueActionPerformed
         // TODO add your handling code here:
         new TelaVerificarEstoque(1).setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buttonVerificarEstoqueActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void buttonCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarProdutoActionPerformed
         // TODO add your handling code here:
         new TelaCadastroProduto().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_buttonCadastrarProdutoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        ProdutosDAO pdao = new ProdutosDAO();
+    private void buttonBuscarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarProdutoActionPerformed
         
-        
-        double precoUnitario;
-        int valor;
-        
-        Produtos pr = new Produtos();
-        
-        //valor = (Integer.parseInt(jTextField1.getText()));
-        try{
-            
-            pr = pdao.Vender(Integer.parseInt(jTextField1.getText()));        
-            precoTotal = precoTotal + pr.getPreco();
-            
-            if(pr.getLote() != 0){
-                modelo.addRow(new Object[]{  
+    }//GEN-LAST:event_buttonBuscarProdutoActionPerformed
 
-                    pr.getNomeProduto(),
-                    pr.getPreco(),
-                    pr.getLote(),
-                    pr.getDataValidade(),
-
-                });
-
-                pdao.Delete(Integer.parseInt(jTextField1.getText()));
-            }else{
-                JOptionPane.showMessageDialog(null, "Produto não encontrado tente novamente!");
-            }
-            
-        }catch(java.lang.NumberFormatException ex){
-            
-            JOptionPane.showMessageDialog(null, "Não insira letras, pontos, espaços ou caracteres!");
-        
-        }
-        
-
-        jLabel3.setText(String.valueOf(precoTotal));
-        
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void sairTelaGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairTelaGerenteActionPerformed
+    private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
         // TODO add your handling code here:
         new TelaLogin().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_sairTelaGerenteActionPerformed
+    }//GEN-LAST:event_buttonSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -438,10 +399,11 @@ double precoTotal = 0;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton buttonBuscarProduto;
+    private javax.swing.JButton buttonCadastrarProduto;
+    private javax.swing.JButton buttonNovoCliente;
+    private javax.swing.JButton buttonSair;
+    private javax.swing.JButton buttonVerificarEstoque;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -459,7 +421,6 @@ double precoTotal = 0;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton sairTelaGerente;
+    private javax.swing.JTextField textFieldCodigoBarras;
     // End of variables declaration//GEN-END:variables
 }
