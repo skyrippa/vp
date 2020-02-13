@@ -199,7 +199,7 @@ public class TelaLogin extends javax.swing.JFrame{
                 }
                 if (!funcionarioEncontrado) {
                     JOptionPane.showMessageDialog(null, "Usuario não cadastrado!");   
-                }     
+                }
             }
         }
     }//GEN-LAST:event_buttonEntrarActionPerformed
